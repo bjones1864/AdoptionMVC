@@ -1,0 +1,36 @@
+﻿@model List<Animal>
+
+
+@{
+    if(Model.Any())
+    {
+        <h1>@(Model[0].Breed)s</h1>
+
+        <table>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Age</th>
+            <th>Image</th>
+            <th>Adopt?</th>
+
+            @{
+                foreach(Animal a in Model)
+                {
+                    <tr>
+                        <td>@a.Name</td>
+                        <td>@a.Description</td>
+                        <td>@a.Age</td>
+                        <td>
+                            <img src="@a.Img" height="200px" />
+                        </td>
+                        <td>
+                            <a asp-action="adopt" asp-route-id="@a.Id">Adopt</a>
+                        </td>
+                    </tr>
+                }
+            }
+        
+        
+        </table>
+    }
+}

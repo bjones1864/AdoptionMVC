@@ -1,0 +1,40 @@
+﻿@model List<Animal>
+
+<h1>Available Animals</h1>
+
+<div>
+    <h2>Here are our currently available breeds</h2>
+
+    <ul>
+        @{
+            List<string> breeds = new List<string>();
+
+            foreach(Animal a in Model)
+            {
+                if(!breeds.Contains(a.Breed))
+                {
+                    breeds.Add(a.Breed);
+                    <li>@a.Breed</li>
+                }
+            }
+      }
+    </ul>
+
+</div>
+
+<div>
+    
+
+
+    <form asp-method="post" asp-action="Result">
+
+        <label for="Breed">Please enter a breed from above</label>
+        <input type="text" name="Breed" id="Breed" required/>
+        <br />
+
+        <label for="Age">Max Age</label>
+        <input type="number" name="Age" id="Age"/>
+        <input type="submit"/>
+
+    </form>
+</div>
